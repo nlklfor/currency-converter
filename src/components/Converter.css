@@ -55,9 +55,3 @@ li {
     color: #fff;
   }
   
-  li:last-of-type {
-    display: inline-flex;
-    align-items: center;
-    flex: 0 0 50px;
-    border-right: 0;
-  }

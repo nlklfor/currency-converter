@@ -18,7 +18,6 @@ export const Converter = ({ value, currency, onChangeCurrency, onChangeValue }) 
                 </svg>
             </li>
         </ul>
-        <input className="currency-calculation" onChange={(e) => onChangeValue(e.target.value)} value={value} type="number" placeholder='0'>
-        </input>
+        <input className="currency-calculation" onChange={(e) => onChangeValue(e.target.value)} value={value} type="number" placeholder={0} />
     </div>
 )
