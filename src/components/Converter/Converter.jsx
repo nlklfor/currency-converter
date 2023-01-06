@@ -3,7 +3,7 @@ import "./Converter.css"
 
 const currentCurrency = ["UAH", "USD", "EUR", "GBP"];
 
-export const Converter = ({ value, currency, onChangeCurrency, onChangeValue }) => (
+export const Converter = ({ value, currency, onChangeCurrency, onChangeValue}) => (
     <div className="currency_container">
         <ul className="currency_container-value">
             {currentCurrency.map((cur) => (
