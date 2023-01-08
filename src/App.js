@@ -10,14 +10,16 @@ function App(props) {
   const [toUSD, setToUSD] = useState('USD');
   const [fromPrice, setFromPrice] = useState(0);                  // <---- Creating state for the component
   const [toPrice, setToPrice] = useState(0);
+  const [rates, setRates] = useState(0);
 
-
+  
   const ratesRef = useRef({});
   useEffect(() => {                                       // <----- Using hook useEffect() to connect our API and getting rate's data from it
     fetch('https://www.cbr-xml-daily.ru/latest.js')
     .then((res) => res.json())
     .then((json) => {
-    ratesRef.current = json.rates;               
+    ratesRef.current = json.rates;      
+    setRates(json.rates)
     })
     .catch((err) => {
       console.warn(err);
@@ -44,12 +46,12 @@ function App(props) {
     setToPrice(value);
   };
   const onChangeUSD = () => {
-    const price = 1 / ratesRef.current[toUSD];
-    setToUSD(price.toFixed(3));
+    const price = 1 * rates['UAH'] / rates['USD'];
+    return price.toFixed(3);
   };
   const onChangeEUR = () => {
-    const price = 1 / ratesRef.current[toEUR];
-    setToEUR(price.toFixed(3));
+    const price = 1 * rates['UAH']/ rates['EUR'];
+    return price.toFixed(3);
   };
   return (
     <div className="converter_container">
