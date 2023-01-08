@@ -6,8 +6,8 @@ import { useEffect, useRef, useState } from 'react';
 function App(props) {
   const [fromCurrency , setFromCurrency] = useState('UAH');
   const [toCurrency, setToCurrency] = useState('USD');
-  const [fromPrice, setFromPrice] = useState(0);                  // <---- Creating state for the component
-  const [toPrice, setToPrice] = useState(0);
+  const [sourcePrice, setSourcePrice] = useState(0);                  // <---- Creating state for the component
+  const [targetPrice, setTargetPrice] = useState(0);
   const [rates, setRates] = useState(0);
 
   
@@ -26,22 +26,22 @@ function App(props) {
     })
   }, []);
   useEffect(() => {
-    onChangeFromPrice(fromPrice);
+    onChangeFromPrice(sourcePrice);
   }, [fromCurrency]);
   useEffect(() => {
-    onChangeToPrice(toPrice);
+    onChangeToPrice(targetPrice);
   }, [toCurrency]);
   const onChangeFromPrice = (value) => {                       // <----- Calculating value that will be shown FROM --> TO
     const price = value / ratesRef.current[fromCurrency];
     const result = price * ratesRef.current[toCurrency];
-    setToPrice(result.toFixed(3));
-    setFromPrice(value);
+    setTargetPrice(result.toFixed(3));
+    setSourcePrice(value);
   };
   const onChangeToPrice = (value) => {                        // <----- Calculating value that will be shown TO --> FROM
     const price = value / ratesRef.current[toCurrency];
     const result = price * ratesRef.current[fromCurrency];
-    setFromPrice(result.toFixed(3));
-    setToPrice(value);
+    setSourcePrice(result.toFixed(3));
+    setTargetPrice(value);
   };
   const onChangeUSD = () => {
     const price = 1 * rates['UAH'] / rates['USD'];
@@ -63,8 +63,8 @@ function App(props) {
         <Live value={onChangeUSD} currency_value={"USD"} currency_uah={"UAH"} onChangeCurrency={1}/>
         <Live value={onChangeEUR} currency_value={"EUR"} currency_uah={"UAH"} onChangeCurrency={1}/>
       </header>
-      <Converter value={fromPrice} currency={fromCurrency} onChangeCurrency={setFromCurrency} onChangeValue={onChangeFromPrice} />
-      <Converter value={toPrice} currency={toCurrency} onChangeCurrency={setToCurrency} onChangeValue={onChangeToPrice}/> 
+      <Converter value={sourcePrice} currency={fromCurrency} onChangeCurrency={setFromCurrency} onChangeValue={onChangeFromPrice} />
+      <Converter value={targetPrice} currency={toCurrency} onChangeCurrency={setToCurrency} onChangeValue={onChangeToPrice}/> 
     </div>
   );
 }
