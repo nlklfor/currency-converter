@@ -11,3 +11,12 @@ svg {
   width: 16px;
   height: 16px;
 }
+.currency_title{
+  text-align: center;
+  font-weight: 800;
+}
+.currency_title-live{
+  text-align: center;
+  font-weight: 700;
+  font-style: italic;
+}

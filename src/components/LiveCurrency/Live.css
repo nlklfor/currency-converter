@@ -1,0 +1,9 @@
+.currency_live-course{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 32px;
+    font-weight: 600;
+    
+}

@@ -1,4 +1,5 @@
 import React from "react";
+import './Live.css'
 
 export const Live = ({ value, currency_value, currency_uah,onChangeCurrency }) => (
     <div className="currency_live">

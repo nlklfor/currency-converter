@@ -6,8 +6,6 @@ import { useEffect, useRef, useState } from 'react';
 function App(props) {
   const [fromCurrency , setFromCurrency] = useState('UAH');
   const [toCurrency, setToCurrency] = useState('USD');
-  const [toEUR, setToEUR] = useState('EUR');
-  const [toUSD, setToUSD] = useState('USD');
   const [fromPrice, setFromPrice] = useState(0);                  // <---- Creating state for the component
   const [toPrice, setToPrice] = useState(0);
   const [rates, setRates] = useState(0);
@@ -58,7 +56,7 @@ function App(props) {
       <h1 className="currency_title">
             Currency Converter
         </h1>
-        <h1 className="currency_live-title">
+        <h1 className="currency_title-live">
             Current exchange rates
         </h1>
       <header className="converter_header">
